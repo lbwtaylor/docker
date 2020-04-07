@@ -62,7 +62,7 @@ ENV APACHE_RUN_GROUP_ID 1000
 COPY db.sql /filerun.setup.sql
 COPY autoconfig.php /
 
-VOLUME ["/var/www/html", "/user-files"]
+VOLUME ["/var/www/html", "/user-files", "/etc/apache2"]
 
 COPY ./entrypoint.sh /
 COPY ./wait-for-it.sh /
@@ -73,8 +73,6 @@ RUN chmod +x /entrypoint.sh
 
 #Enable SSL
 RUN a2enmod ssl
-#RUN sed 's+/etc/ssl/certs/ssl-cert-snakeoil.pem+/user-files/cert.pem+g' /etc/apache2/sites-available/default-ssl.conf >> /etc/apache2/sites-available/default-sslv2.conf
-#RUN sed 's+/etc/ssl/private/ssl-cert-snakeoil.key+/user-files/key.pem+g'/etc/apache2/sites-available/default-sslv2.conf >> /etc/apache2/sites-enabled/000-default-ssl.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
