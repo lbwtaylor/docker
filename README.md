@@ -1,3 +1,12 @@
+Updates from Offical Docker Image
+==================
+
+This image adds SSL to the official Filerun docker image. 
+
+You must modify the docker compose to pass through port 443 in the  ports listing (after 80:80)
+      - "430:430"
+
+
 ![FileRun Logo](https://filerun.com/images/long-logo.png)
 
 What is FileRun?
