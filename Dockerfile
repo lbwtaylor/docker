@@ -74,8 +74,8 @@ RUN chmod +x /entrypoint.sh
 #Enable SSL
 RUN a2enmod ssl
 RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/000-default-ssl.conf
-COPY /user-files/cert.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
-COPY /user-files/key.pem /etc/ssl/private/ssl-cert-snakeoil.key
+RUN cp /user-files/cert.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
+RUN cp /user-files/key.pem /etc/ssl/private/ssl-cert-snakeoil.key
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
