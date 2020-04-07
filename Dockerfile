@@ -62,7 +62,7 @@ ENV APACHE_RUN_GROUP_ID 1000
 COPY db.sql /filerun.setup.sql
 COPY autoconfig.php /
 
-VOLUME ["/var/www/html", "/user-files", "/etc/apache2"]
+VOLUME ["/var/www/html", "/user-files", "/apacheconf"]
 
 COPY ./entrypoint.sh /
 COPY ./wait-for-it.sh /
@@ -73,6 +73,8 @@ RUN chmod +x /entrypoint.sh
 
 #Enable SSL
 RUN a2enmod ssl
+RUN cp /etc/apache2/sites-available/* /apacheconf/sites-available
+RUN cp /apacheconf/sites-enabled* /etc/apache2/sites-enabled
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
