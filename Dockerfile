@@ -71,5 +71,8 @@ RUN chmod +x /wait-for-it.sh
 RUN chmod +x /import-db.sh
 RUN chmod +x /entrypoint.sh
 
+#Enable SSL
+RUN a2enmod ssl
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
