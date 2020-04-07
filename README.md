@@ -4,8 +4,9 @@ Updates from Offical Docker Image
 This image adds SSL to the official Filerun docker image. 
 
 You must modify the docker compose to pass through port 443 in the  ports listing (after 80:80)
-      - "430:430"
+      - "443:443"
 
+You must install cert.pem and key.pem in the directory that you map to /user-files/
 
 ![FileRun Logo](https://filerun.com/images/long-logo.png)
 
