@@ -5,8 +5,10 @@ This image adds SSL to the official Filerun docker image.
 
 You must modify the docker compose to pass through port 443 in the  ports listing (after 80:80)
       - "443:443"
+      
+You must add a volume share for /apacheconf
 
-You must install cert.pem and key.pem in the directory that you map to /user-files/
+When you first run the container, it will copy the standard Apache sites conf files. Copy the SSL conf from the /sites-available director to the /sites-enabled director and edit it as necessary to point to your certificates. 
 
 ![FileRun Logo](https://filerun.com/images/long-logo.png)
 

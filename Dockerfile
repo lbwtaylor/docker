@@ -73,8 +73,6 @@ RUN chmod +x /entrypoint.sh
 
 #Enable SSL
 RUN a2enmod ssl
-RUN cp /etc/apache2/sites-available/* /apacheconf/sites-available
-RUN cp /apacheconf/sites-enabled* /etc/apache2/sites-enabled
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]

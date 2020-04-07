@@ -20,4 +20,11 @@ if [ ! -e /var/www/html/index.php ];  then
 	/wait-for-it.sh $mysql_host:$mysql_port -t 120 -- /import-db.sh
 fi
 
+mkdir /apacheconf/sites-available && chown www-data:www-data  /apacheconf/sites-available
+mkdir /apacheconf/sites-enabled && chown www-data:www-data  /apacheconf/sites-enabled 
+
+cp -n /etc/apache2/sites-available/* /apacheconf/sites-available
+cp -n /etc/apache2/sites-enabled/* /apacheconf/sites-enabled
+cp /apacheconf/sites-enabled/* /etc/apache2/sites-enabled
+
 exec "$@"
